@@ -9,7 +9,7 @@ vi.mock('react-router-dom', () => ({
 }));
 
 vi.mock('../get-error-message/get-error-message', () => ({
-  getErrorMessage: (_: unknown) => mockError,
+  getErrorMessage: (error: unknown) => error,
 }));
 
 describe(ErrorPage.name, () => {
