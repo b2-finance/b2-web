@@ -1,14 +1,14 @@
 import {
-  DEFAULT_ICON_HEIGHT,
+  DEFAULT_ICON_HEIGHT_PX,
   DEFAULT_ICON_STROKE,
-  DEFAULT_ICON_WIDTH,
+  DEFAULT_ICON_WIDTH_PX,
   IconProps,
 } from './icon-utils';
 
 export default function LockIcon({
   className,
-  width = DEFAULT_ICON_WIDTH,
-  height = DEFAULT_ICON_HEIGHT,
+  width = DEFAULT_ICON_WIDTH_PX,
+  height = DEFAULT_ICON_HEIGHT_PX,
 }: IconProps) {
   return (
     <svg

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './index.css';
 import { ROUTES } from './routes.ts';
 import { App } from './app/app.tsx';
@@ -11,33 +11,34 @@ import { LoginPage } from './auth/login-page/login-page.tsx';
 
 const router = createBrowserRouter([
   {
-    path: ROUTES.login,
-    element: <LoginPage />,
-  },
-  {
     path: ROUTES.home,
     element: (
       <AuthProvider>
-        <App />
+        <Outlet />
       </AuthProvider>
     ),
     errorElement: <ErrorPage />,
     children: [
       {
-        path: ROUTES.dashboard,
-        element: (
-          <ProtectedRoute>
-            <h1>Dashboard</h1>
-          </ProtectedRoute>
-        ),
+        path: ROUTES.login,
+        element: <LoginPage />,
       },
       {
-        path: ROUTES.budget,
         element: (
           <ProtectedRoute>
-            <h1>Budget</h1>
+            <App />
           </ProtectedRoute>
         ),
+        children: [
+          {
+            path: ROUTES.dashboard,
+            element: <h1>Dashboard</h1>,
+          },
+          {
+            path: ROUTES.budget,
+            element: <h1>Budget</h1>,
+          },
+        ],
       },
     ],
   },
