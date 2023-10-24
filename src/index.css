@@ -1,4 +1,10 @@
-@import "modern-normalize";
+@import 'modern-normalize';
+
+html,
+body,
+#root {
+  height: 100%;
+}
 
 /* https://mattbrictson.com/blog/css-normalize-and-reset */
 
