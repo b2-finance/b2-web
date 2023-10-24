@@ -10,7 +10,7 @@ import {
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
-import { ROUTES } from '../../common/routes';
+import { ROUTES } from '../../routes';
 import { AuthProvider } from './auth-provider';
 import { useAuth } from './use-auth';
 import { UserDto } from '../../api/types';

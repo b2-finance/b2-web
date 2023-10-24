@@ -1,6 +1,6 @@
 import styles from './app.module.scss';
 import { Outlet } from 'react-router-dom';
-import { SkipNav } from '../skip-nav/skip-nav';
+import { SkipNav } from '../components/skip-nav/skip-nav';
 
 export function App() {
   const mainId = 'main-content';

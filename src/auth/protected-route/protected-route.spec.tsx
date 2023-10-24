@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import * as ReactRouterDom from 'react-router-dom';
-import { ROUTES } from '../../common/routes';
+import { ROUTES } from '../../routes';
 import { ProtectedRoute } from './protected-route';
 
 let mockIsAuth: boolean;

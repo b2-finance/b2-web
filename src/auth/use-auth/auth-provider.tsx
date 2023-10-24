@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ROUTES } from '../../common/routes';
+import { ROUTES } from '../../routes';
 import { login as loginApi } from './login';
 import { logout as logoutApi } from './logout';
 import { LoginDto } from '../../api/types';

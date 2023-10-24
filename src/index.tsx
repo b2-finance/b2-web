@@ -2,14 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './index.css';
-import { ROUTES } from './common/routes.ts';
+import { ROUTES } from './routes.ts';
 import { App } from './app/app.tsx';
-import { ErrorPage } from './error-page/error-page.tsx';
+import { ErrorPage } from './error/error-page/error-page.tsx';
 import { AuthProvider } from './auth/use-auth/auth-provider.tsx';
 import { ProtectedRoute } from './auth/protected-route/protected-route.tsx';
 import { LoginPage } from './auth/login-page/login-page.tsx';
 
 const router = createBrowserRouter([
+  {
+    path: ROUTES.login,
+    element: <LoginPage />,
+  },
   {
     path: ROUTES.home,
     element: (
@@ -19,10 +23,6 @@ const router = createBrowserRouter([
     ),
     errorElement: <ErrorPage />,
     children: [
-      {
-        path: ROUTES.login,
-        element: <LoginPage />,
-      },
       {
         path: ROUTES.dashboard,
         element: (

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { ROUTES } from '../../common/routes';
+import { ROUTES } from '../../routes';
 import { useAuth } from '../use-auth/use-auth';
 
 /**
