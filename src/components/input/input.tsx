@@ -10,7 +10,7 @@ export type CommonInputProps = {
   className?: string;
   name: string;
   value?: string | number;
-  setValue: (value?: string) => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   invalid?: boolean;
   autocomplete: string;
   disabled?: boolean;
@@ -127,7 +127,7 @@ export function Input({
   name,
   type = 'text',
   value = '',
-  setValue,
+  onChange,
   invalid = false,
   autocomplete,
   disabled = false,
@@ -145,9 +145,6 @@ export function Input({
   icon,
   iconSizePx,
 }: InputProps) {
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
-  };
   const iconStyle = { '--iconSize': iconSizePx } as CSSProperties;
 
   return (
@@ -158,7 +155,7 @@ export function Input({
         name={name}
         type={type}
         value={value}
-        onChange={handleChange}
+        onChange={onChange}
         autoComplete={autocomplete}
         disabled={disabled}
         max={max}

@@ -61,7 +61,7 @@ describe(Input.name, () => {
             name="test-input"
             autocomplete="off"
             value={defaultValue[type]}
-            setValue={() => {}}
+            onChange={() => {}}
           />
         </label>,
       );
@@ -77,7 +77,7 @@ describe(Input.name, () => {
     // FIXME: Cannot test date types. `userEvent.type` is not working.
     ...[...textInputs, ...emailInputs, ...numberInputs].map((type) => [type]),
   ])(
-    'should call setValue when input changes (%s)',
+    'should call onChange when input changes (%s)',
     async (type: InputType) => {
       const user = userEvent.setup();
       const mockSetValue = vi.fn();
@@ -90,7 +90,7 @@ describe(Input.name, () => {
             type={type}
             name="test-input"
             autocomplete="off"
-            setValue={mockSetValue}
+            onChange={mockSetValue}
           />
         </label>,
       );
@@ -115,7 +115,7 @@ describe(Input.name, () => {
             name="test-input"
             autocomplete="off"
             value={defaultValue[type]}
-            setValue={() => {}}
+            onChange={() => {}}
             icon={<div>{iconContent}</div>}
           />
         </label>,
