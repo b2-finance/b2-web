@@ -1,0 +1,36 @@
+.inputContainer {
+  position: relative;
+
+  .input {
+    $paddingX: 0.5rem;
+    /*
+      If --iconSize is undefined, $iconSize becomes -$paddingX,
+      which effectively negates the double padding on padding-left.
+    */
+    $iconSize: max(calc(var(--iconSize, -999) * 1px), calc($paddingX * -1));
+
+    width: 100%;
+    padding: 0.25rem $paddingX;
+    padding-left: calc(($paddingX * 2) + $iconSize);
+
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  .inputIcon {
+    position: absolute;
+    left: 1px;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    user-select: none;
+    height: calc(var(--iconSize) * 1px);
+    width: calc(var(--iconSize) * 1px);
+  }
+}
