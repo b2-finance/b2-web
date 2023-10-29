@@ -9,6 +9,7 @@ export interface ButtonProps {
   children: ReactNode;
   id?: string;
   className?: string;
+  type?: 'button' | 'submit';
   onClick?: MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
 }
@@ -23,6 +24,7 @@ export function Button({
   children,
   id,
   className,
+  type = 'button',
   onClick,
   disabled = false,
 }: ButtonProps) {
@@ -30,7 +32,7 @@ export function Button({
     <button
       id={id}
       className={clsx(styles.button, className && className)}
-      type="button"
+      type={type}
       onClick={onClick}
       disabled={disabled}
     >
