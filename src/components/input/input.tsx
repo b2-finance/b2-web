@@ -148,10 +148,10 @@ export function Input({
   const iconStyle = { '--iconSize': iconSizePx } as CSSProperties;
 
   return (
-    <div className={clsx(styles.inputContainer, className && className)}>
+    <div className={clsx(styles.inputContainer, className)}>
       <input
         id={id}
-        className={clsx(styles.input, invalid ? 'invalid' : undefined)}
+        className={clsx(styles.input, invalid && 'invalid')}
         name={name}
         type={type}
         value={value}

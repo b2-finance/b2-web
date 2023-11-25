@@ -31,7 +31,7 @@ export function Button({
   return (
     <button
       id={id}
-      className={clsx(styles.button, className && className)}
+      className={clsx(styles.button, className)}
       type={type}
       onClick={onClick}
       disabled={disabled}
