@@ -12,7 +12,15 @@ describe(login.name, () => {
       json: async () => userDto,
     });
 
-    const user = await login({ username: 'user', password: 'pass' });
+    const user = await login({ username: userDto.username, password: 'pass' });
     expect(user).toEqual(userDto);
+  });
+
+  it('should throw an error when login fails with status >= 400', () => {
+    global.fetch = vi.fn().mockResolvedValue({ status: 400 });
+
+    expect(
+      async () => await login({ username: 'user', password: 'pass' }),
+    ).rejects.toThrowError();
   });
 });
