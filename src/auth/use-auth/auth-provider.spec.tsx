@@ -152,4 +152,8 @@ describe(AuthProvider.name, () => {
       expect(mockNavigate).toBeCalledWith(ROUTES.home);
     });
   });
+
+  it('login should return an error message when login fails', () => {
+    // TODO
+  });
 });

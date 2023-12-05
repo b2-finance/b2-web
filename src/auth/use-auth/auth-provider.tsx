@@ -18,9 +18,9 @@ export interface AuthContextType {
    * Logs the user into the app.
    *
    * @param dto {@link LoginDto}
-   * @returns void
+   * @returns An error message if the login fails, or void if it succeeds.
    */
-  login: (dto: LoginDto) => Promise<void>;
+  login: (dto: LoginDto) => Promise<string | void>;
   /**
    * Logs the user out of the app.
    *
@@ -35,7 +35,7 @@ export interface AuthContextType {
 export const AuthContext = createContext<AuthContextType>({
   isAuth: false,
   userId: null,
-  login: (_dto) => Promise.resolve(),
+  login: (_dto) => Promise.resolve(''),
   logout: () => {},
 });
 
@@ -65,9 +65,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
   useEffect(() => localStorage.setItem(userIdKey, userId ?? ''), [userId]);
 
   const login = async (dto: LoginDto) => {
-    const user = await loginApi(dto);
-    setUserId(user?.id ?? null);
-    user && navigate(location.state?.from ?? ROUTES.dashboard);
+    try {
+      const user = await loginApi(dto);
+      setUserId(user?.id ?? null);
+      user && navigate(location.state?.from ?? ROUTES.dashboard);
+    } catch (error) {
+      return (error as Error).message;
+    }
   };
 
   const logout = async () => {
