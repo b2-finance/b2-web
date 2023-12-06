@@ -1,18 +1,18 @@
-import authStyles from './auth-page/auth-page.module.scss';
+import authStyles from '../auth-page/auth-page.module.scss';
 import loginStyles from './login-page.module.scss';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ROUTES } from '../routes';
-import { AuthPage } from './auth-page/auth-page';
-import { AuthErrors } from './auth-page/auth-errors';
-import { AuthForm } from './auth-page/auth-form';
-import { AuthOtherContent } from './auth-page/auth-other-content';
-import { useAuth } from './use-auth/use-auth';
-import { Input } from '../components/input/input';
-import { Button } from '../components/button/button';
-import { DEFAULT_ICON_WIDTH_PX } from '../components/icons/icon-utils';
-import UserIcon from '../components/icons/user-icon';
-import LockIcon from '../components/icons/lock-icon';
+import { ROUTES } from '../../routes';
+import { AuthPage } from '../auth-page/auth-page';
+import { AuthErrors } from '../auth-page/auth-errors';
+import { AuthForm } from '../auth-page/auth-form';
+import { AuthOtherContent } from '../auth-page/auth-other-content';
+import { useAuth } from '../use-auth/use-auth';
+import { Input } from '../../components/input/input';
+import { Button } from '../../components/button/button';
+import { DEFAULT_ICON_WIDTH_PX } from '../../components/icons/icon-utils';
+import UserIcon from '../../components/icons/user-icon';
+import LockIcon from '../../components/icons/lock-icon';
 
 export function LoginPage() {
   const [username, setUsername] = useState<string>('');

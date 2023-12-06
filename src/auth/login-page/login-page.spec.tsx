@@ -6,7 +6,7 @@ import userEvent from '@testing-library/user-event';
 
 const mockLogin = vi.fn();
 
-vi.mock('./use-auth/use-auth', () => ({
+vi.mock('../use-auth/use-auth', () => ({
   useAuth: () => ({ login: mockLogin }),
 }));
 
