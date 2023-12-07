@@ -49,7 +49,7 @@ const defaultValue: { [k: string]: string | number } = {
 };
 
 describe(Input.name, () => {
-  it.each([...inputTypes.map((type) => [type])])(
+  it.each(inputTypes.map((type) => [type]))(
     'should be initialized with the expected value (%s)',
     (type: InputType) => {
       render(
@@ -73,35 +73,32 @@ describe(Input.name, () => {
     },
   );
 
-  it.each([
+  it.each(
     // FIXME: Cannot test date types. `userEvent.type` is not working.
-    ...[...textInputs, ...emailInputs, ...numberInputs].map((type) => [type]),
-  ])(
-    'should call onChange when input changes (%s)',
-    async (type: InputType) => {
-      const user = userEvent.setup();
-      const mockSetValue = vi.fn();
+    [...textInputs, ...emailInputs, ...numberInputs].map((type) => [type]),
+  )('should call onChange when input changes (%s)', async (type: InputType) => {
+    const user = userEvent.setup();
+    const mockSetValue = vi.fn();
 
-      render(
-        <label htmlFor="input">
-          Input
-          <Input
-            id="input"
-            type={type}
-            name="test-input"
-            autocomplete="off"
-            onChange={mockSetValue}
-          />
-        </label>,
-      );
+    render(
+      <label htmlFor="input">
+        Input
+        <Input
+          id="input"
+          type={type}
+          name="test-input"
+          autocomplete="off"
+          onChange={mockSetValue}
+        />
+      </label>,
+    );
 
-      const input = screen.getByLabelText('Input');
-      await user.type(input, defaultValue[type]?.toString().charAt(0));
-      await waitFor(() => expect(mockSetValue).toBeCalledTimes(1));
-    },
-  );
+    const input = screen.getByLabelText('Input');
+    await user.type(input, defaultValue[type]?.toString().charAt(0));
+    await waitFor(() => expect(mockSetValue).toBeCalledTimes(1));
+  });
 
-  it.each([...inputTypes.map((type) => [type])])(
+  it.each(inputTypes.map((type) => [type]))(
     'should render the expected icon (%s)',
     (type: InputType) => {
       const iconContent = 'Hello';
