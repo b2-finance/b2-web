@@ -12,6 +12,7 @@ export interface ButtonProps {
   type?: 'button' | 'submit';
   onClick?: MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
+  title?: string;
 }
 
 /**
@@ -27,6 +28,7 @@ export function Button({
   type = 'button',
   onClick,
   disabled = false,
+  title,
 }: ButtonProps) {
   return (
     <button
@@ -35,6 +37,7 @@ export function Button({
       type={type}
       onClick={onClick}
       disabled={disabled}
+      title={title}
     >
       {children}
     </button>

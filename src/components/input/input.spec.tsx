@@ -99,7 +99,7 @@ describe(Input.name, () => {
   });
 
   it.each(inputTypes.map((type) => [type]))(
-    'should render the expected icon (%s)',
+    'should render the expected left icon (%s)',
     (type: InputType) => {
       const iconContent = 'Hello';
 
@@ -113,13 +113,68 @@ describe(Input.name, () => {
             autocomplete="off"
             value={defaultValue[type]}
             onChange={() => {}}
-            icon={<div>{iconContent}</div>}
+            iconL={<div>{iconContent}</div>}
           />
         </label>,
       );
 
       const icon = screen.getByText(iconContent);
       expect(icon).toBeInTheDocument();
+    },
+  );
+
+  it.each(inputTypes.map((type) => [type]))(
+    'should render the expected right icon (%s)',
+    (type: InputType) => {
+      const iconContent = 'Hello';
+
+      render(
+        <label htmlFor="input">
+          Input
+          <Input
+            id="input"
+            type={type}
+            name="test-input"
+            autocomplete="off"
+            value={defaultValue[type]}
+            onChange={() => {}}
+            iconR={<div>{iconContent}</div>}
+          />
+        </label>,
+      );
+
+      const icon = screen.getByText(iconContent);
+      expect(icon).toBeInTheDocument();
+    },
+  );
+
+  it.each(inputTypes.map((type) => [type]))(
+    'should render both left and right icons (%s)',
+    (type: InputType) => {
+      const iconLContent = 'foo';
+      const iconRContent = 'bar';
+
+      render(
+        <label htmlFor="input">
+          Input
+          <Input
+            id="input"
+            type={type}
+            name="test-input"
+            autocomplete="off"
+            value={defaultValue[type]}
+            onChange={() => {}}
+            iconL={<div>{iconLContent}</div>}
+            iconR={<div>{iconRContent}</div>}
+          />
+        </label>,
+      );
+
+      const iconL = screen.getByText(iconLContent);
+      const iconR = screen.getByText(iconRContent);
+
+      expect(iconL).toBeInTheDocument();
+      expect(iconR).toBeInTheDocument();
     },
   );
 });

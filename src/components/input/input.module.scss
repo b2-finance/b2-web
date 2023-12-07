@@ -5,22 +5,23 @@
     $paddingX: 0.5rem;
     /*
       If --iconSize is undefined, $iconSize becomes -$paddingX,
-      which effectively negates the double padding on padding-left.
+      which effectively negates the double padding on padding-left/right.
     */
-    $iconSize: max(calc(var(--iconSize, -999) * 1px), calc($paddingX * -1));
+    $iconLSize: max(calc(var(--iconLSize, -999) * 1px), calc($paddingX * -1));
+    $iconRSize: max(calc(var(--iconRSize, -999) * 1px), calc($paddingX * -1));
 
     width: 100%;
     padding: 0.25rem $paddingX;
-    padding-left: calc(($paddingX * 2) + $iconSize);
+    padding-left: calc(($paddingX * 2) + $iconLSize);
+    padding-right: calc(($paddingX * 2) + $iconRSize);
 
     &::placeholder {
       color: rgba(0, 0, 0, 0.4);
     }
   }
 
-  .inputIcon {
+  .icon {
     position: absolute;
-    left: 1px;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
     top: 50%;
@@ -32,5 +33,13 @@
     user-select: none;
     height: calc(var(--iconSize) * 1px);
     width: calc(var(--iconSize) * 1px);
+  }
+
+  .iconL {
+    left: 1px;
+  }
+
+  .iconR {
+    right: 1px;
   }
 }

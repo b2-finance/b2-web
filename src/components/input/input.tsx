@@ -16,8 +16,10 @@ export type CommonInputProps = {
   disabled?: boolean;
   readonly?: boolean;
   required?: boolean;
-  icon?: ReactNode;
-  iconSizePx?: number;
+  iconL?: ReactNode;
+  iconR?: ReactNode;
+  iconLSizePx?: number;
+  iconRSizePx?: number;
 };
 
 export type TextInputType = 'password' | 'search' | 'tel' | 'text' | 'url';
@@ -142,10 +144,13 @@ export function Input({
   required = false,
   size,
   step,
-  icon,
-  iconSizePx,
+  iconL,
+  iconR,
+  iconLSizePx,
+  iconRSizePx,
 }: InputProps) {
-  const iconStyle = { '--iconSize': iconSizePx } as CSSProperties;
+  const iconLStyle = { '--iconLSize': iconLSizePx } as CSSProperties;
+  const iconRStyle = { '--iconRSize': iconRSizePx } as CSSProperties;
 
   return (
     <div className={clsx(styles.inputContainer, className)}>
@@ -169,11 +174,16 @@ export function Input({
         required={required}
         size={size}
         step={step}
-        style={iconStyle}
+        style={{ ...iconLStyle, ...iconRStyle }}
       />
-      {icon && (
-        <div className={styles.inputIcon} style={iconStyle}>
-          {icon}
+      {iconL && (
+        <div className={clsx(styles.icon, styles.iconL)} style={iconLStyle}>
+          {iconL}
+        </div>
+      )}
+      {iconR && (
+        <div className={clsx(styles.icon, styles.iconR)} style={iconRStyle}>
+          {iconR}
         </div>
       )}
     </div>

@@ -46,8 +46,8 @@ export function LoginPage() {
             autocomplete="username"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
-            icon={<UserIcon />}
-            iconSizePx={DEFAULT_ICON_WIDTH_PX}
+            iconL={<UserIcon />}
+            iconLSizePx={DEFAULT_ICON_WIDTH_PX}
           />
         </label>
         <label htmlFor="password">
@@ -59,8 +59,8 @@ export function LoginPage() {
             autocomplete="current-password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
-            icon={<LockIcon />}
-            iconSizePx={DEFAULT_ICON_WIDTH_PX}
+            iconL={<LockIcon />}
+            iconLSizePx={DEFAULT_ICON_WIDTH_PX}
           />
         </label>
         <Button className={authStyles.submitButton} onClick={handleSubmit}>
