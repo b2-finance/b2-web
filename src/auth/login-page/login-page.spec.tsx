@@ -17,7 +17,7 @@ describe(LoginPage.name, () => {
         <LoginPage />
       </MemoryRouter>,
     );
-    const input = screen.getByPlaceholderText(/Username/);
+    const input = screen.getByLabelText(/Username/);
     expect(input).toBeInTheDocument();
   });
 
@@ -27,7 +27,7 @@ describe(LoginPage.name, () => {
         <LoginPage />
       </MemoryRouter>,
     );
-    const input = screen.getByPlaceholderText(/Password/);
+    const input = screen.getByLabelText(/Password/);
     expect(input).toBeInTheDocument();
   });
 
@@ -82,8 +82,8 @@ describe(LoginPage.name, () => {
         </MemoryRouter>,
       );
 
-      const usernameInput = screen.getByPlaceholderText(/Username/);
-      const passwordInput = screen.getByPlaceholderText(/Password/);
+      const usernameInput = screen.getByLabelText(/Username/);
+      const passwordInput = screen.getByLabelText(/Password/);
       const button = screen.getByRole('button', { name: /Login/ });
 
       username && (await user.type(usernameInput, username));
@@ -114,8 +114,8 @@ describe(LoginPage.name, () => {
         </MemoryRouter>,
       );
 
-      const usernameInput = screen.getByPlaceholderText(/Username/);
-      const passwordInput = screen.getByPlaceholderText(/Password/);
+      const usernameInput = screen.getByLabelText(/Username/);
+      const passwordInput = screen.getByLabelText(/Password/);
       const button = screen.getByRole('button', { name: /Login/ });
 
       username && (await user.type(usernameInput, username));

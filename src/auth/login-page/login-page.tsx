@@ -37,26 +37,32 @@ export function LoginPage() {
     <AuthPage>
       {errors && <AuthErrors errors={errors} />}
       <AuthForm title="Login">
-        <Input
-          name="username"
-          type="text"
-          placeholder="Username"
-          autocomplete="username"
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
-          icon={<UserIcon />}
-          iconSizePx={DEFAULT_ICON_WIDTH_PX}
-        />
-        <Input
-          name="password"
-          type="password"
-          placeholder="Password"
-          autocomplete="current-password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          icon={<LockIcon />}
-          iconSizePx={DEFAULT_ICON_WIDTH_PX}
-        />
+        <label htmlFor="username">
+          Username
+          <Input
+            id="username"
+            name="username"
+            type="text"
+            autocomplete="username"
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
+            icon={<UserIcon />}
+            iconSizePx={DEFAULT_ICON_WIDTH_PX}
+          />
+        </label>
+        <label htmlFor="password">
+          Password
+          <Input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            icon={<LockIcon />}
+            iconSizePx={DEFAULT_ICON_WIDTH_PX}
+          />
+        </label>
         <Button className={authStyles.submitButton} onClick={handleSubmit}>
           Login
         </Button>
