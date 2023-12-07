@@ -8,11 +8,9 @@ import { AuthErrors } from '../auth-page/auth-errors';
 import { AuthForm } from '../auth-page/auth-form';
 import { AuthOtherContent } from '../auth-page/auth-other-content';
 import { useAuth } from '../use-auth/use-auth';
-import { Input } from '../../components/input/input';
 import { Button } from '../../components/button/button';
-import { DEFAULT_ICON_WIDTH_PX } from '../../components/icons/icon-utils';
-import UserIcon from '../../components/icons/user-icon';
-import LockIcon from '../../components/icons/lock-icon';
+import { UsernameInput } from '../auth-page/username-input';
+import { PasswordInput } from '../auth-page/password-input';
 
 export function LoginPage() {
   const [username, setUsername] = useState<string>('');
@@ -37,32 +35,13 @@ export function LoginPage() {
     <AuthPage>
       {errors && <AuthErrors errors={errors} />}
       <AuthForm title="Login">
-        <label htmlFor="username">
-          Username
-          <Input
-            id="username"
-            name="username"
-            type="text"
-            autocomplete="username"
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-            iconL={<UserIcon />}
-            iconLSizePx={DEFAULT_ICON_WIDTH_PX}
-          />
-        </label>
-        <label htmlFor="password">
-          Password
-          <Input
-            id="password"
-            name="password"
-            type="password"
-            autocomplete="current-password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            iconL={<LockIcon />}
-            iconLSizePx={DEFAULT_ICON_WIDTH_PX}
-          />
-        </label>
+        <UsernameInput id="username" value={username} setValue={setUsername} />
+        <PasswordInput
+          id="password"
+          type="current"
+          value={password}
+          setValue={setPassword}
+        />
         <Button className={authStyles.submitButton} onClick={handleSubmit}>
           Login
         </Button>

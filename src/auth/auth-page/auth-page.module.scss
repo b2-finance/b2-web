@@ -61,6 +61,13 @@
       margin-top: 0.75rem;
     }
 
+    .viewPasswordButton {
+      border: none;
+      background-color: transparent;
+      pointer-events: auto;
+      margin-right: -0.25rem;
+    }
+
     .authOtherContent {
       padding: $padding;
       font-size: smaller;
