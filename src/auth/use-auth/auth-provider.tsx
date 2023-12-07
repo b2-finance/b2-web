@@ -10,10 +10,12 @@ export interface AuthContextType {
    * The current authentication state of the user.
    */
   isAuth: boolean;
+
   /**
    * The current user's unique id.
    */
   userId: string | null;
+
   /**
    * Logs the user into the app.
    *
@@ -21,6 +23,7 @@ export interface AuthContextType {
    * @returns An error message if the login fails, or void if it succeeds.
    */
   login: (dto: LoginDto) => Promise<string | void>;
+
   /**
    * Logs the user out of the app.
    *
