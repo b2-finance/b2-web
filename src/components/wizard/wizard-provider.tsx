@@ -13,9 +13,9 @@ export interface WizardContextType {
   values: KeyValue;
 
   /**
-   * Updates the named property in {@link values}.
+   * Updates the named property in `values`.
    *
-   * @param name The name of a property in {@link values}.
+   * @param name The name of a property in `values`.
    * @param value The value of the named property.
    * @returns void.
    */
@@ -37,9 +37,9 @@ export interface WizardContextType {
   data: KeyValue;
 
   /**
-   * Updates the named property in {@link data}.
+   * Updates the named property in `data`.
    *
-   * @param name The name of a property in {@link data}.
+   * @param name The name of a property in `data`.
    * @param value The value of the named property.
    * @returns void.
    */
@@ -53,22 +53,21 @@ export interface WizardContextType {
   stepIndex: number;
 
   /**
-   * Decrements {@link stepIndex} by 1 (will not go below 0).
+   * Decrements `stepIndex` by 1 (will not go below 0).
    *
    * @returns void.
    */
   prevStep: () => void;
 
   /**
-   * Increments {@link stepIndex} by 1.
+   * Increments `stepIndex` by 1.
    *
    * @returns void.
    */
   nextStep: () => void;
 
   /**
-   * Restores the initial state of {@link values}, {@link data}, and
-   * {@link stepIndex}.
+   * Restores the initial state of `values`, `data`, and `stepIndex`.
    *
    * @returns void.
    */
