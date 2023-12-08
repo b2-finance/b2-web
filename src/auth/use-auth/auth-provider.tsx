@@ -1,9 +1,10 @@
 import { ReactNode, createContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ROUTES } from '../../routes';
+import { signup as signupApi } from './signup';
 import { login as loginApi } from './login';
 import { logout as logoutApi } from './logout';
-import { LoginDto } from '../../api/types';
+import { LoginDto, SignupDto } from '../../api/types';
 
 export interface AuthContextType {
   /**
@@ -15,6 +16,14 @@ export interface AuthContextType {
    * The current user's unique id.
    */
   userId: string | null;
+
+  /**
+   * Creates a new account for the user in the app.
+   *
+   * @param dto {@link SignupDto}
+   * @returns An error message if the signup fails, or void if it succeeds.
+   */
+  signup: (dto: SignupDto) => Promise<string | void>;
 
   /**
    * Logs the user into the app.
@@ -38,6 +47,7 @@ export interface AuthContextType {
 export const AuthContext = createContext<AuthContextType>({
   isAuth: false,
   userId: null,
+  signup: (_dto) => Promise.resolve(''),
   login: (_dto) => Promise.resolve(''),
   logout: () => {},
 });
@@ -67,6 +77,16 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   useEffect(() => localStorage.setItem(userIdKey, userId ?? ''), [userId]);
 
+  const signup = async (dto: SignupDto) => {
+    try {
+      const user = await signupApi(dto);
+      setUserId(user?.id ?? null);
+      user && navigate(location.state?.from ?? ROUTES.dashboard);
+    } catch (error) {
+      return (error as Error).message;
+    }
+  };
+
   const login = async (dto: LoginDto) => {
     try {
       const user = await loginApi(dto);
@@ -87,7 +107,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
   };
 
   return (
-    <AuthContext.Provider value={{ isAuth: !!userId, userId, login, logout }}>
+    <AuthContext.Provider
+      value={{ isAuth: !!userId, userId, signup, login, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );
