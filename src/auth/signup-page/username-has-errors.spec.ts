@@ -62,7 +62,7 @@ describe(usernameHasErrors.name, () => {
     (username: string) => {
       const errors = usernameHasErrors(username);
       expect(errors).toEqual(
-        'Username must contain only uppercase letters, lowercase letters, digits, dashes (-), underscores (_).',
+        'Username must contain only letters, digits, dashes (-), or underscores (_).',
       );
       expect(errors).not.toEqual(null);
     },
