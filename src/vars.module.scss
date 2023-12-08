@@ -1,0 +1,31 @@
+/*
+  mixin example:
+
+  @import './vars.module.scss';
+
+  @include tablet {
+    styles..
+  }
+*/
+@mixin tablet {
+  @media (min-width: 481px) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: 821px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (min-width: 1025px) {
+    @content;
+  }
+}
+
+$lightGrey: whitesmoke;
+$lightGreyBorder: lightgrey;
+$linkBlue: dodgerblue;
+$green: mediumseagreen;

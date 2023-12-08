@@ -1,4 +1,5 @@
 import styles from './auth-page.module.scss';
+import { AuthOtherContent } from './auth-other-content';
 
 /**
  * Props for the {@link AuthErrors} component.
@@ -15,10 +16,10 @@ export interface AuthErrorsProps {
  */
 export function AuthErrors({ errors = [] }: AuthErrorsProps) {
   return (
-    <div className={styles.authErrors}>
+    <AuthOtherContent className={styles.errors}>
       {errors.map((error, i) => (
         <div key={i}>{error}</div>
       ))}
-    </div>
+    </AuthOtherContent>
   );
 }
