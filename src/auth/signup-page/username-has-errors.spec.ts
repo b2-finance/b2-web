@@ -12,7 +12,7 @@ describe(usernameHasErrors.name, () => {
     'should fail when username is not 3-32 characters (username=%s)',
     (username: string) => {
       const errors = usernameHasErrors(username);
-      expect(errors).toEqual('Username must be 3-32 characters in length.');
+      expect(errors).toEqual('Username must be 3-32 characters.');
       expect(errors).not.toEqual(null);
     },
   );

@@ -1,5 +1,5 @@
-import { validateString } from './validate-string';
-import { joinList } from '../join-list';
+import { validateString } from '../../components/validations/validate-string';
+import { joinList } from '../../components/join-list';
 
 /**
  * Checks if the given string is a properly formatted password according to the
@@ -22,7 +22,7 @@ export function passwordHasErrors(password: string): string | null {
     criteria: [
       {
         test: /^.{12,32}$/,
-        name: 'be 12-32 characters in length',
+        name: 'be 12-32 characters',
       },
       {
         test: /[a-z]+/,

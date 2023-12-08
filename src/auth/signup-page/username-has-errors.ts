@@ -1,5 +1,5 @@
-import { validateString } from './validate-string';
-import { joinList } from '../join-list';
+import { validateString } from '../../components/validations/validate-string';
+import { joinList } from '../../components/join-list';
 
 /**
  * Checks if the given string is a properly formatted username according to the
@@ -20,7 +20,7 @@ export function usernameHasErrors(username: string): string | null {
     criteria: [
       {
         test: /^.{3,32}$/,
-        name: 'be 3-32 characters in length',
+        name: 'be 3-32 characters',
       },
       {
         test: /^[a-zA-Z]/,

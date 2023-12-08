@@ -12,7 +12,7 @@ describe(passwordHasErrors.name, () => {
     'should fail when password is not 12-32 characters (password=%s)',
     (password: string) => {
       const errors = passwordHasErrors(password);
-      expect(errors).toEqual('Password must be 12-32 characters in length.');
+      expect(errors).toEqual('Password must be 12-32 characters.');
       expect(errors).not.toEqual(null);
     },
   );
