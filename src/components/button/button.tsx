@@ -1,6 +1,6 @@
+import styles from './button.module.scss';
 import { MouseEventHandler, ReactNode } from 'react';
 import clsx from 'clsx';
-import styles from './button.module.scss';
 
 /**
  * Props for the {@link Button} component.

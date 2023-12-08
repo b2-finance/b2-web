@@ -1,5 +1,5 @@
-import { Dispatch, SetStateAction, useState } from 'react';
 import styles from './auth-page.module.scss';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { Input } from '../../components/input/input';
 import { Button } from '../../components/button/button';
 import { DEFAULT_ICON_WIDTH_PX } from '../../components/icons/icon-utils';

@@ -1,6 +1,6 @@
 import styles from './input.module.scss';
-import clsx from 'clsx';
 import { CSSProperties, ChangeEvent, ReactNode } from 'react';
+import clsx from 'clsx';
 
 /**
  * Common props for the {@link Input} component.
