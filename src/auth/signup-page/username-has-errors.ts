@@ -7,7 +7,7 @@ import { joinList } from '../../components/join-list';
  *
  * - must be 3-32 characters in length
  * - must begin with a letter
- * - must contain only letters, digits, dashes (-), or underscores (_)
+ * - must contain only letters, digits, dashes (-), and underscores (_)
  *
  * @param username A string to validate.
  * @returns A string of required criteria that the username does not satisfy,
@@ -28,7 +28,7 @@ export function usernameHasErrors(username: string): string | null {
       },
       {
         test: /^[\w-]+$/,
-        name: 'contain only letters, digits, dashes (-), or underscores (_)',
+        name: 'contain only letters, digits, dashes (-), and underscores (_)',
       },
     ],
   });
