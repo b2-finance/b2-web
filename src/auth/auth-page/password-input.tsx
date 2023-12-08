@@ -65,7 +65,7 @@ export function PasswordInput({
           <Button
             className={styles.viewPasswordButton}
             onClick={() => setViewPassword((prev) => !prev)}
-            title={`${viewPassword ? 'Hide' : 'View'} password`}
+            title={`${viewPassword ? 'Hide' : 'Show'} password`}
           >
             {viewPassword ? <EyeSlashIcon /> : <EyeIcon />}
           </Button>
