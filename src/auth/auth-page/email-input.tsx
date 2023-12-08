@@ -1,4 +1,4 @@
-import { Dispatch } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { Input } from '../../components/input/input';
 import { DEFAULT_ICON_WIDTH_PX } from '../../components/icons/icon-utils';
 import MailIcon from '../../components/icons/mail-icon';
@@ -10,7 +10,8 @@ export interface EmailInputProps {
   id: string;
   className?: string;
   value: string;
-  setValue: Dispatch<React.SetStateAction<string>>;
+  setValue: Dispatch<SetStateAction<string>>;
+  label?: string;
 }
 
 /**
@@ -24,10 +25,11 @@ export function EmailInput({
   className,
   value,
   setValue,
+  label = 'Email',
 }: EmailInputProps) {
   return (
     <label className={className} htmlFor={id}>
-      Email
+      {label}
       <Input
         id={id}
         name={id}

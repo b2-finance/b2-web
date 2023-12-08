@@ -1,4 +1,4 @@
-import { Dispatch, useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import styles from './auth-page.module.scss';
 import { Input } from '../../components/input/input';
 import { Button } from '../../components/button/button';
@@ -14,8 +14,9 @@ export interface PasswordInputProps {
   id: string;
   className?: string;
   value: string;
-  setValue: Dispatch<React.SetStateAction<string>>;
+  setValue: Dispatch<SetStateAction<string>>;
   type: 'current' | 'new' | 're-enter';
+  label?: string;
 }
 
 /**
@@ -31,23 +32,20 @@ export function PasswordInput({
   value,
   setValue,
   type,
+  label = 'Password',
 }: PasswordInputProps) {
   const [viewPassword, setViewPassword] = useState<boolean>(false);
 
-  let label;
   let autocomplete;
 
   switch (type) {
     case 'current':
-      label = 'Current Password';
       autocomplete = 'current-password';
       break;
     case 'new':
-      label = 'New Password';
       autocomplete = 'new-password';
       break;
     case 're-enter':
-      label = 'Re-enter Password';
       autocomplete = 'off';
       break;
   }
@@ -67,7 +65,7 @@ export function PasswordInput({
           <Button
             className={styles.viewPasswordButton}
             onClick={() => setViewPassword((prev) => !prev)}
-            title={label}
+            title={`${viewPassword ? 'Hide' : 'View'} password`}
           >
             {viewPassword ? <EyeSlashIcon /> : <EyeIcon />}
           </Button>
