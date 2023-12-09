@@ -8,24 +8,25 @@
   }
 */
 @mixin tablet {
-  @media (min-width: 481px) {
+  @media (min-width: 768px) {
     @content;
   }
 }
 
 @mixin laptop {
-  @media (min-width: 821px) {
+  @media (min-width: 1024px) {
     @content;
   }
 }
 
-@mixin mobile {
-  @media (min-width: 1025px) {
+@mixin desktop {
+  @media (min-width: 1280px) {
     @content;
   }
 }
 
 $lightGrey: whitesmoke;
 $lightGreyBorder: lightgrey;
+$greyContent: #595959;
 $linkBlue: dodgerblue;
 $green: mediumseagreen;
