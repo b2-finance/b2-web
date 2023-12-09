@@ -1,7 +1,7 @@
 @import '../../vars.module.scss';
 
 .auth {
-  $marginTop: 15vh;
+  $marginTop: 7rem;
   $rowGap: 1rem;
 
   display: flex;
@@ -32,7 +32,7 @@
     width: 100%;
 
     @include tablet {
-      width: 384px;
+      width: 448px;
     }
 
     $padding: 1.5rem;
@@ -53,6 +53,7 @@
         display: flex;
         flex-direction: column;
         gap: 0.75rem;
+        width: 100%;
       }
     }
 

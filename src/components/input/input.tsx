@@ -177,12 +177,12 @@ export function Input({
         style={{ ...iconLStyle, ...iconRStyle }}
       />
       {iconL && (
-        <div className={clsx(styles.icon, styles.iconL)} style={iconLStyle}>
+        <div className={styles.iconL} style={iconLStyle}>
           {iconL}
         </div>
       )}
       {iconR && (
-        <div className={clsx(styles.icon, styles.iconR)} style={iconRStyle}>
+        <div className={styles.iconR} style={iconRStyle}>
           {iconR}
         </div>
       )}
