@@ -1,5 +1,5 @@
-import { validateString } from '../../components/validations/validate-string';
-import { joinList } from '../../components/join-list';
+import { validateString } from '../../utilities/validations/validate-string';
+import { joinList } from '../../utilities/join-list/join-list';
 
 /**
  * Checks if the given string is a properly formatted email.
