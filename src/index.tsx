@@ -40,8 +40,20 @@ const router = createBrowserRouter([
             element: <h1>Dashboard</h1>,
           },
           {
-            path: ROUTES.budget,
-            element: <h1>Budget</h1>,
+            path: ROUTES.journal,
+            element: <h1>Journal</h1>,
+          },
+          {
+            path: ROUTES.reports,
+            element: <h1>Reports</h1>,
+          },
+          {
+            path: ROUTES.planning,
+            element: <h1>Planning</h1>,
+          },
+          {
+            path: ROUTES.setup,
+            element: <h1>Setup</h1>,
           },
         ],
       },

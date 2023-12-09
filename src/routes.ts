@@ -5,5 +5,8 @@ export const ROUTES = {
   logout: '/logout',
   forgotPassword: '/forgot-password',
   dashboard: '/dashboard',
-  budget: '/budget',
+  journal: '/journal',
+  reports: '/reports',
+  planning: '/planning',
+  setup: '/setup',
 };
