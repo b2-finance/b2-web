@@ -1,0 +1,94 @@
+@import '../../vars.module.scss';
+
+$outerPaddingY: 0.75rem;
+$outerPaddingX: 1rem;
+$gap: 0.5rem;
+$borderRadius: 0.25rem;
+
+#header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $outerPaddingY $outerPaddingX;
+  background-color: $lightGrey;
+  box-shadow: 0 1px 4px $lightGreyBorder;
+
+  #logo {
+    display: none;
+    text-decoration: none;
+    border-radius: $borderRadius;
+    overflow: hidden;
+
+    img {
+      width: 2rem;
+      aspect-ratio: 1/1;
+    }
+  }
+
+  @include tablet {
+    #menu {
+      display: none;
+    }
+    #logo {
+      display: block;
+    }
+  }
+
+  .button,
+  #menu,
+  #logo {
+    border: none;
+    background-color: transparent;
+  }
+
+  .settings {
+    display: flex;
+    align-items: center;
+    gap: $gap;
+    font-size: smaller;
+  }
+
+  nav ul {
+    display: none;
+    gap: $gap;
+
+    @include tablet {
+      display: flex;
+    }
+
+    .navLink {
+      text-decoration: none;
+      padding: 0.25rem 0.5rem;
+      border-radius: $borderRadius;
+      color: $greyContent;
+
+      &:hover {
+        background-color: darken($lightGrey, 5%);
+      }
+
+      &.isActive {
+        color: $green;
+      }
+    }
+
+    &.menuOpen {
+      position: absolute;
+      top: 100%;
+      left: $outerPaddingX;
+      margin-top: $outerPaddingY;
+      display: flex;
+      flex-direction: column;
+      padding: 0.5rem;
+      background-color: $lightGrey;
+      border: 1px solid $lightGreyBorder;
+      border-radius: $borderRadius;
+      box-shadow: 0 4px 4px $lightGreyBorder;
+
+      .navLink {
+        display: flex;
+        padding: 0.25rem 3rem 0.25rem 1rem;
+      }
+    }
+  }
+}
