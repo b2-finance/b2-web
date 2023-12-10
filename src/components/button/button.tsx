@@ -1,5 +1,5 @@
 import styles from './button.module.scss';
-import { MouseEventHandler, ReactNode } from 'react';
+import { CSSProperties, MouseEventHandler, ReactNode } from 'react';
 import clsx from 'clsx';
 
 /**
@@ -13,6 +13,7 @@ export interface ButtonProps {
   onClick?: MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
   title?: string;
+  style?: CSSProperties;
 }
 
 /**
@@ -29,6 +30,7 @@ export function Button({
   onClick,
   disabled = false,
   title,
+  style,
 }: ButtonProps) {
   return (
     <button
@@ -38,6 +40,7 @@ export function Button({
       onClick={onClick}
       disabled={disabled}
       title={title}
+      style={style}
     >
       {children}
     </button>
