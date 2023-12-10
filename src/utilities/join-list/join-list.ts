@@ -18,7 +18,7 @@
 export function joinList(
   list: Array<string | number>,
   prefix?: string | number,
-) {
+): string {
   const listStr = list.reduce(
     (acc, curr, i) =>
       i === 0
