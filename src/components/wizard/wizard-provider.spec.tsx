@@ -1,5 +1,5 @@
 import { assert, describe, expect, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useContext } from 'react';
 import { WizardContext, WizardProvider } from './wizard-provider';
@@ -104,8 +104,10 @@ describe(WizardProvider.name, () => {
     const button = screen.getByRole('button', { name: 'Values' });
     await user.click(button);
 
-    const actual = screen.getByTestId('values').innerHTML;
-    expect(actual).toEqual(`${name}: ${value}`);
+    await waitFor(() => {
+      const actual = screen.getByTestId('values').innerHTML;
+      expect(actual).toEqual(`${name}: ${value}`);
+    });
   });
 
   it('should update the data as expected', async () => {
@@ -123,8 +125,10 @@ describe(WizardProvider.name, () => {
     const button = screen.getByRole('button', { name: 'Data' });
     await user.click(button);
 
-    const actual = screen.getByTestId('data').innerHTML;
-    expect(actual).toEqual(`${name}: ${data}`);
+    await waitFor(() => {
+      const actual = screen.getByTestId('data').innerHTML;
+      expect(actual).toEqual(`${name}: ${data}`);
+    });
   });
 
   it('should update the named value when input value changed', async () => {
@@ -174,7 +178,7 @@ describe(WizardProvider.name, () => {
       const button = screen.getByRole('button', { name: 'Next' });
       for (let i = 0; i < n; i++) await user.click(button);
 
-      expect(actual.innerHTML).toEqual(n.toString());
+      await waitFor(() => expect(actual.innerHTML).toEqual(n.toString()));
     },
   );
 
@@ -197,11 +201,13 @@ describe(WizardProvider.name, () => {
       for (let i = 0; i < n + offset; i++) await user.click(next);
 
       const actual = screen.getByTestId('step-index');
-      expect(actual.innerHTML).toEqual((n + offset).toString());
+      await waitFor(() =>
+        expect(actual.innerHTML).toEqual((n + offset).toString()),
+      );
 
       for (let i = 0; i < n; i++) await user.click(prev);
 
-      expect(actual.innerHTML).toEqual(offset.toString());
+      await waitFor(() => expect(actual.innerHTML).toEqual(offset.toString()));
     },
   );
 
@@ -218,8 +224,10 @@ describe(WizardProvider.name, () => {
     await user.click(button);
     await user.click(button);
 
-    const actual = screen.getByTestId('step-index').innerHTML;
-    expect(actual).toEqual('0');
+    await waitFor(() => {
+      const actual = screen.getByTestId('step-index').innerHTML;
+      expect(actual).toEqual('0');
+    });
   });
 
   it('should reset the data, values, and stepIndex to initial state', async () => {
@@ -254,17 +262,23 @@ describe(WizardProvider.name, () => {
     const data = screen.getByTestId('data');
     const stepIndex = screen.getByTestId('step-index');
 
-    expect(values.innerHTML).toEqual(
-      `${test.values.name}: ${test.values.value}`,
-    );
-    expect(data.innerHTML).toEqual(`${test.data.name}: ${test.data.data}`);
-    expect(stepIndex.innerHTML).toEqual('1');
+    await waitFor(() => {
+      expect(values.innerHTML).toEqual(
+        `${test.values.name}: ${test.values.value}`,
+      );
+      expect(data.innerHTML).toEqual(`${test.data.name}: ${test.data.data}`);
+      expect(stepIndex.innerHTML).toEqual('1');
+    });
 
     const resetButton = screen.getByRole('button', { name: 'Reset' });
     await user.click(resetButton);
 
-    expect(values.innerHTML).toEqual(`${initValues.key}: ${initValues.value}`);
-    expect(data.innerHTML).toEqual(`${initData.key}: ${initData.data}`);
-    expect(stepIndex.innerHTML).toEqual('0');
+    await waitFor(() => {
+      expect(values.innerHTML).toEqual(
+        `${initValues.key}: ${initValues.value}`,
+      );
+      expect(data.innerHTML).toEqual(`${initData.key}: ${initData.data}`);
+      expect(stepIndex.innerHTML).toEqual('0');
+    });
   });
 });
