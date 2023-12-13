@@ -1,7 +1,7 @@
 import { assert, describe, expect, it } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ReactNode, useContext } from 'react';
+import { useContext } from 'react';
 import { WizardContext, WizardProvider } from './wizard-provider';
 
 function TestComponent({
@@ -30,8 +30,8 @@ function TestComponent({
 
   return (
     <>
-      {v && <div data-testid="values">{`${v[0]}: ${v[1] as ReactNode}`}</div>}
-      {d && <div data-testid="data">{`${d[0]}: ${d[1] as ReactNode}`}</div>}
+      {v && <div data-testid="values">{`${v[0]}: ${v[1]}`}</div>}
+      {d && <div data-testid="data">{`${d[0]}: ${d[1]}`}</div>}
       <div data-testid="step-index">{stepIndex}</div>
       {test?.values && (
         <button
