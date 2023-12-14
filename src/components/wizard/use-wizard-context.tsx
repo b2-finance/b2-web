@@ -1,10 +1,11 @@
 import { useContext } from 'react';
-import { WizardContext } from './wizard-provider';
+import { WizardContext, WizardContextType } from './wizard-provider';
 
 /**
- * Syntactic sugar for `useContext(WizardContext)`. Must be descendant of a
+ * Provides access to the {@link WizardContext}. Must be descendant of a
  * `WizardProvider` or a component wrapped with the `wizard` HOC.
  *
- * @returns A `WizardContextType`.
+ * @returns A {@link WizardContextType}.
  */
-export const useWizardContext = () => useContext(WizardContext);
+export const useWizardContext = (): WizardContextType =>
+  useContext(WizardContext);
